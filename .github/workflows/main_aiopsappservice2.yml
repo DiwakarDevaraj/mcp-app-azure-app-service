@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: my-mcp-app
-        run: npm ci
+        run: npm install
 
       - name: Build project
         working-directory: my-mcp-app
