@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App
+name: Build and deploy Node.js app to Azure Web App - AIOpsAppService2
 
 on:
   push:
@@ -14,8 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Show workspace structure (DEBUG - keep for first run)
+        run: |
+          pwd
+          ls -R
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
