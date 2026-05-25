@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MCP Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      background: #38bdf8;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>MCP Tool Dashboard</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Time</h3>
+      <div id="server-time"></div>
+      <button onclick="runTool('get-time')">Get Time</button>
+    </div>
+
+    <div class="card">
+      <h3>Date</h3>
+      <div id="server-date"></div>
+      <button onclick="runTool('get-date')">Get Date</button>
+    </div>
+
+    <div class="card">
+      <h3>Hello</h3>
+      <input id="name" placeholder="Enter name" />
+      <div id="hello-message"></div>
+      <button onclick="runTool('say-hello', { name: document.getElementById('name').value })">
+        Say Hello
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Random</h3>
+      <div id="random-number"></div>
+      <button onclick="runTool('get-random-number')">Generate</button>
+    </div>
+
+    <div class="card">
+      <h3>Reverse</h3>
+      <input id="text" />
+      <div id="reversed-text"></div>
+      <button onclick="runTool('reverse-text', { text: document.getElementById('text').value })">
+        Reverse
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Word Count</h3>
+      <input id="wc" />
+      <div id="word-count"></div>
+      <button onclick="runTool('word-count', { text: document.getElementById('wc').value })">
+        Count
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Incident</h3>
+      <input id="inc-type" placeholder="type" />
+      <input id="inc-group" placeholder="group" />
+      <input id="inc-desc" placeholder="desc" />
+      <div id="incident"></div>
+      <button onclick="runTool('create_incident', {
+        type: document.getElementById('inc-type').value,
+        assignmentGroup: document.getElementById('inc-group').value,
+        description: document.getElementById('inc-desc').value
+      })">
+        Create Incident
+      </button>
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/mcp-app.ts"></script>
+</body>
+</html>
