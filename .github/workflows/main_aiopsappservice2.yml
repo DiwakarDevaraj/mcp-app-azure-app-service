@@ -21,19 +21,13 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: Clean install dependencies
+      - name: Install dependencies
         working-directory: my-mcp-app
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Install TypeScript types
-        working-directory: my-mcp-app
-        run: npm install --save-dev @types/node @types/express @types/cors
+        run: npm ci
 
       - name: Build project
         working-directory: my-mcp-app
-        run: npx tsc
+        run: npm run build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
