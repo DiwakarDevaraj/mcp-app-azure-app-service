@@ -22,7 +22,7 @@ const server = new McpServer({
 
 /* ---------------- RESOURCE ---------------- */
 
-const resourceUri = "ui://mcp-app.html";
+const resourceUri = "ui://index.html";
 
 /* ---------------- SAFE RESPONSE HELPER ---------------- */
 
@@ -172,7 +172,7 @@ registerAppResource(
   resourceUri,
   { mimeType: "text/html" },
   async () => {
-    const htmlPath = path.join(process.cwd(), "dist", "mcp-app.html");
+    const htmlPath = path.join(process.cwd(), "dist-server", "..", "dist", "index.html");
 
     console.log("Loading UI:", htmlPath);
 
