@@ -37,7 +37,11 @@ jobs:
 
       - name: Verify dist files
         working-directory: my-mcp-app
-        run: ls -la dist/
+        run: |
+          echo "=== Vite output (dist/) ==="
+          ls -la dist/
+          echo "=== Server output (dist-server/) ==="
+          ls -la dist-server/
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
