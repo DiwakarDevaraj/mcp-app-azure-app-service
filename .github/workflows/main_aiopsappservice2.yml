@@ -33,5 +33,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: AIOpsAppService2
+          slot-name: production
           package: my-mcp-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
