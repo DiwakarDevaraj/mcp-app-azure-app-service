@@ -1,6 +1,8 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 name: Build and deploy Node.js app to Azure Web App
 
 on:
@@ -19,17 +21,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24.x'        # ✅ Match Azure's NODE|24-lts
+          node-version: '24.x'
 
       - name: Install dependencies
         working-directory: my-mcp-app
         run: npm install
 
-      - name: Build TypeScript
+      - name: Build Frontend (Vite)
+        working-directory: my-mcp-app
+        run: npm run build
+
+      - name: Build TypeScript (tsc)
         working-directory: my-mcp-app
         run: npx tsc
 
-      - name: Verify dist/server.js exists  # ✅ Catches build failures early
+      - name: Verify dist files
         working-directory: my-mcp-app
         run: ls -la dist/
 
