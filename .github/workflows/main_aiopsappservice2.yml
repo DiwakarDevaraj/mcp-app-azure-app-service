@@ -20,26 +20,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      
+
       - name: Install dependencies
         working-directory: my-mcp-app
         run: npm install
-      
+
       - name: Build TypeScript
         working-directory: my-mcp-app
         run: npx tsc
-      
-      - name: Copy package files for runtime
-        run: |
-          cp my-mcp-app/package.json my-mcp-app/dist/
-      
-      - name: Install production deps inside dist
-        working-directory: my-mcp-app/dist
-        run: npm install --production
-      
-      - name: Deploy to Azure
+
+      # ❌ REMOVE dist packaging logic completely
+
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: AIOpsAppService2
-          package: my-mcp-app/dist
+          package: my-mcp-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
