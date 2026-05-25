@@ -14,20 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Show structure (DEBUG)
-        run: |
-          pwd
-          ls -R
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
-      # 👉 IMPORTANT: move into your actual project folder
       - name: Install dependencies
         working-directory: my-mcp-app
         run: npm install
